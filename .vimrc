@@ -9,6 +9,8 @@ endif
 " Specify a directory for vim-plug plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'skywind3000/vim-preview'
+
 " Initialize plugin system
 call plug#end()
 
