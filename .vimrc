@@ -39,6 +39,14 @@ map! <ESC>[5B <C-Down>
 map! <ESC>[5C <C-Right>
 map! <ESC>[5D <C-Left>
 
+map <ESC>[2A <S-Up>
+map <ESC>[2B <S-Down>
+map <ESC>[2C <S-Right>
+map <ESC>[2D <S-Left>
+map! <ESC>[2A <S-Up>
+map! <ESC>[2B <S-Down>
+map! <ESC>[2C <S-Right>
+map! <ESC>[2D <S-Left>
 
 " NERDTree Customisations"
 map <C-n> :NERDTreeToggle<CR>
@@ -46,13 +54,19 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '~'
 
 " vim-preview customizations
-autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<CR>
-autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<CR>
+autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR>
+autocmd FileType qf nnoremap <silent><buffer> <C-Right> :PreviewQuickfix<CR>
+autocmd FileType qf nnoremap <silent><buffer> <S-Right> :PreviewClose<CR><CR>
+autocmd FileType qf nnoremap <silent><buffer> <Up> k:PreviewQuickfix<CR>
+autocmd FileType qf nnoremap <silent><buffer> <Down> j:PreviewQuickfix<CR>
 
 noremap <C-Up>   :PreviewScroll -1<CR>
 noremap <C-Down> :PreviewScroll +1<CR>
+noremap <C-Left> :PreviewClose<CR>
+noremap <C-Right> :PreviewTag<CR>
+noremap <S-Right> :PreviewClose<CR>:PreviewGoto edit<CR>
 inoremap <C-Up>   <C-\><C-o>:PreviewScroll -1<CR>
 inoremap <C-Down> <C-\><C-o>:PreviewScroll +1<CR>
-
-noremap <C-p> :PreviewTag<CR>
-inoremap <C-p> <C-\><C-o>:PreviewTag<CR>
+inoremap <C-Left> <C-\><C-o>:PreviewClose<CR>
+inoremap <C-Right> <C-\><C-o>:PreviewTag<CR>
+inoremap <S-Right> <ESC>:PreviewClose<CR>:PreviewGoto edit<CR>
