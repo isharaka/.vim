@@ -48,11 +48,6 @@ map! <ESC>[2B <S-Down>
 map! <ESC>[2C <S-Right>
 map! <ESC>[2D <S-Left>
 
-" NERDTree Customisations"
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '~'
-
 " vim-preview customizations
 autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR>
 autocmd FileType qf nnoremap <silent><buffer> <C-Right> :PreviewQuickfix<CR>
