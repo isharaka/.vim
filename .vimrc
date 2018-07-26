@@ -65,3 +65,10 @@ inoremap <C-Down> <C-\><C-o>:PreviewScroll +1<CR>
 inoremap <C-Left> <C-\><C-o>:PreviewClose<CR>
 inoremap <C-Right> <C-\><C-o>:PreviewTag<CR>
 inoremap <S-Right> <ESC>:PreviewClose<CR>:PreviewGoto edit<CR>
+
+" Use silver searcher with Ack
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+
+nnoremap <Leader>a :Ack!<Space>
