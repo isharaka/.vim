@@ -59,12 +59,12 @@ noremap <C-Up>   :PreviewScroll -1<CR>
 noremap <C-Down> :PreviewScroll +1<CR>
 noremap <C-Left> :PreviewClose<CR>
 noremap <C-Right> :PreviewTag<CR>
-noremap <S-Right> :PreviewClose<CR>:PreviewGoto edit<CR>
+noremap <S-Right> :PreviewGoto edit<CR>:PreviewClose<CR>
 inoremap <C-Up>   <C-\><C-o>:PreviewScroll -1<CR>
 inoremap <C-Down> <C-\><C-o>:PreviewScroll +1<CR>
 inoremap <C-Left> <C-\><C-o>:PreviewClose<CR>
 inoremap <C-Right> <C-\><C-o>:PreviewTag<CR>
-inoremap <S-Right> <ESC>:PreviewClose<CR>:PreviewGoto edit<CR>
+inoremap <S-Right> <ESC>:PreviewGoto edit<CR>:PreviewClose<CR>
 
 " Use silver searcher with Ack
 if executable('ag')
