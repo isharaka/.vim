@@ -72,3 +72,6 @@ if executable('ag')
 endif
 
 nnoremap <Leader>a :Ack!<Space>
+
+let g:CommandTFileScanner = 'find'
+let g:CommandTMaxFiles=200000
