@@ -48,6 +48,18 @@ map! <ESC>[2B <S-Down>
 map! <ESC>[2C <S-Right>
 map! <ESC>[2D <S-Left>
 
+" search cutomizations
+
+set incsearch
+
+" Enable search highlights at every search
+noremap * :set hlsearch<CR>:nohlsearch<CR>*
+noremap / :set hlsearch<CR>:nohlsearch<CR>/
+noremap ? :set hlsearch<CR>:nohlsearch<CR>?
+
+" shortcut to toggle highlights
+noremap <C-H> :set hlsearch!<CR>
+
 " vim-preview customizations
 autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR>
 autocmd FileType qf nnoremap <silent><buffer> <C-Right> :PreviewQuickfix<CR>
