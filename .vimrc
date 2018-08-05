@@ -87,3 +87,23 @@ nnoremap <Leader>a :Ack!<Space>
 
 let g:CommandTFileScanner = 'find'
 let g:CommandTMaxFiles=200000
+
+" netrw customizations
+
+" preview window uses vertical split
+let g:netrw_preview   = 1
+" default list style - tree
+let g:netrw_liststyle = 3
+" make netrw window take minimum size when previewing file
+let g:netrw_winsize   = 0
+
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+  " open file in previous window and retain focue
+  nmap <buffer><silent> <C-G> <C-W>w<C-W>pP<C-W>p
+  nmap <buffer><silent> go <C-W>w<C-W>pP<C-W>p
+endfunction
