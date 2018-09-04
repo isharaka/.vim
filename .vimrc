@@ -48,11 +48,18 @@ map! <ESC>[2B <S-Down>
 map! <ESC>[2C <S-Right>
 map! <ESC>[2D <S-Left>
 
+" Escape short cuts
+inoremap <C-C> <ESC>
+inoremap <C-\> <ESC>
+vnoremap <C-C> <ESC>
+vnoremap <C-\> <ESC>
+
 " search cutomizations
 
 set incsearch
 
 " Enable search highlights at every search
+noremap # :set hlsearch<CR>:nohlsearch<CR>#
 noremap * :set hlsearch<CR>:nohlsearch<CR>*
 noremap / :set hlsearch<CR>:nohlsearch<CR>/
 noremap ? :set hlsearch<CR>:nohlsearch<CR>?
