@@ -48,11 +48,20 @@ map! <ESC>[2B <S-Down>
 map! <ESC>[2C <S-Right>
 map! <ESC>[2D <S-Left>
 
-" Escape short cuts
+" Escape short ecuts
 inoremap <C-C> <ESC>
 inoremap <C-\> <ESC>
 vnoremap <C-C> <ESC>
 vnoremap <C-\> <ESC>
+
+" Setup relative numbering
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " search cutomizations
 
