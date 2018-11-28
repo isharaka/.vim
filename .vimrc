@@ -116,6 +116,7 @@ let g:netrw_winsize   = 0
 augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
+    autocmd filetype netrw setl bufhidden=wipe
 augroup END
 
 function! NetrwMapping()
