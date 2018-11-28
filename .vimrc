@@ -10,6 +10,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'skywind3000/vim-preview'
+Plug 'junegunn/fzf', { 'dir': '~/tools/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
