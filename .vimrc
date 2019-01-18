@@ -56,6 +56,10 @@ inoremap <C-\> <ESC>
 vnoremap <C-C> <ESC>
 vnoremap <C-\> <ESC>
 
+" MOve to end of line with +
+nnoremap + $
+vnoremap + $
+
 " Setup relative numbering
 set number relativenumber
 
