@@ -16,3 +16,6 @@
 [submodule "pack/plugins/start/commentary"]
 	path = pack/plugins/start/commentary
 	url = https://tpope.io/vim/commentary.git
+[submodule "bundle/vim-smooth-scroll"]
+	path = bundle/vim-smooth-scroll
+	url = https://github.com/cskeeters/vim-smooth-scroll.git
