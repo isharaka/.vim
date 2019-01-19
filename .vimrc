@@ -16,7 +16,7 @@ Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 call plug#end()
 
-colorscheme molokai
+colorscheme sublimemonokai
 
 syntax enable
 
