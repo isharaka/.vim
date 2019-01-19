@@ -19,3 +19,6 @@
 [submodule "bundle/vim-smooth-scroll"]
 	path = bundle/vim-smooth-scroll
 	url = https://github.com/cskeeters/vim-smooth-scroll.git
+[submodule "bundle/syntax"]
+	path = bundle/syntax
+	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
