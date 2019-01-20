@@ -130,3 +130,11 @@ function! NetrwMapping()
   nmap <buffer><silent> <C-G> <C-W>w<C-W>pP<C-W>p
   nmap <buffer><silent> go <C-W>w<C-W>pP<C-W>p
 endfunction
+
+" detect remote ssh session
+let g:remote_session = ($SSH_CLIENT != "")
+
+" disable smooth scrolling for remote sessions
+if g:remote_session
+    let g:scroll_disable_mapping = 1
+endif
