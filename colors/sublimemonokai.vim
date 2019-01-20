@@ -195,7 +195,7 @@ hi! link PreProc        SublimeGreen
 hi! link Include        SublimeWhite
 hi! link Define         SublimePink
 hi! link Macro          SublimeGreen
-hi! link PreCondit      SublimeWhite
+hi! link PreCondit      SublimePink
 hi! link Special        SublimePurple
 hi! link SpecialChar    SublimePink
 hi! link Tag            SublimeGreen
