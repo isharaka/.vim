@@ -142,6 +142,8 @@ if g:remote_session
     let g:scroll_disable_mapping = 1
 endif
 
+let g:ms_per_line=1
+
 " undotree customizations
 let g:undotree_WindowLayout = 2
 
