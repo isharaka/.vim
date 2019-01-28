@@ -22,6 +22,9 @@ syntax enable
 
 filetype plugin indent on
 
+set undodir=~/.vim/undodir/
+set undofile
+
 " show existing tab with 4 spaces width"
 set tabstop=4
 " when indenting with '>', use 4 spaces width"
@@ -138,3 +141,10 @@ let g:remote_session = ($SSH_CLIENT != "")
 if g:remote_session
     let g:scroll_disable_mapping = 1
 endif
+
+" undotree customizations
+let g:undotree_WindowLayout = 2
+
+nnoremap <Leader>ut :UndotreeToggle<CR>
+inoremap <Leader>ut <ESC>:UndotreeToggle<CR>
+nnoremap <Leader>uf :UndotreeFocus<CR>
