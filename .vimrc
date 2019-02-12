@@ -86,9 +86,9 @@ noremap ? :set hlsearch<CR>:nohlsearch<CR>?
 noremap <C-H> :set hlsearch!<CR>
 
 " vim-preview customizations
-autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR>
+autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR><C-W>=
 autocmd FileType qf nnoremap <silent><buffer> <C-Right> :PreviewQuickfix<CR>
-autocmd FileType qf nnoremap <silent><buffer> <S-Right> :PreviewClose<CR><CR>
+autocmd FileType qf nnoremap <silent><buffer> <S-Right> :PreviewClose<CR><CR><C-W>=
 autocmd FileType qf nnoremap <silent><buffer> <Up> k:PreviewQuickfix<CR>
 autocmd FileType qf nnoremap <silent><buffer> <Down> j:PreviewQuickfix<CR>
 
