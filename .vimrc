@@ -106,9 +106,14 @@ inoremap <S-Right> <ESC>:PreviewGoto edit<CR>:PreviewClose<CR>
 nnoremap <C-P> :FZF<CR>
 nnoremap <C-N> :Buffers<CR>
 
-" Use silver searcher with Ack
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+" Use ripgrep with Ack
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep --no-heading'
+else
+    " Use silver searcher with Ack
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
 endif
 
 nnoremap <Leader>a :Ack!<Space>
