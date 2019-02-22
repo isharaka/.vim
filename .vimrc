@@ -155,3 +155,7 @@ let g:undotree_WindowLayout = 2
 nnoremap <Leader>ut :UndotreeToggle<CR>
 inoremap <Leader>ut <ESC>:UndotreeToggle<CR>
 nnoremap <Leader>uf :UndotreeFocus<CR>
+
+" clang-format shortcuts
+map <C-K> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
