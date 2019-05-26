@@ -13,6 +13,7 @@ Plug 'skywind3000/vim-preview'
 Plug 'junegunn/fzf', { 'dir': '~/tools/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv', {'on': ['Gitv']}
 
 " Initialize plugin system
 call plug#end()
