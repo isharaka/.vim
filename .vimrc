@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'dir': '~/tools/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
+Plug 'lifepillar/vim-mucomplete'
 
 " Initialize plugin system
 call plug#end()
@@ -35,6 +36,9 @@ set shiftwidth=4
 set expandtab
 " Remove trailing white spaces upon writing
 autocmd BufWritePre * %s/\s\+$//e
+
+set completeopt+=menuone
+set completeopt+=noselect
 
 " Aliases for CTRL + Arrow Key
 map <ESC>[5A <C-Up>
@@ -161,3 +165,9 @@ nnoremap <Leader>uf :UndotreeFocus<CR>
 " clang-format shortcuts
 map <C-K> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+
+" mucomplete
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['file', 'keyn', 'dict']
+let g:mucomplete#chains.cpp = ['file', 'tags']
