@@ -34,6 +34,8 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces"
 set expandtab
+" Allow backspace to go over autoindent, line breaks and start of insert
+set backspace=indent,eol,start
 " Remove trailing white spaces upon writing
 autocmd BufWritePre * %s/\s\+$//e
 
