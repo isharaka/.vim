@@ -72,6 +72,12 @@ vnoremap <C-\> <ESC>
 nnoremap + $
 vnoremap + $
 
+" Quicker window movement
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
 " Setup relative numbering
 set number relativenumber
 
@@ -168,8 +174,8 @@ inoremap <Leader>ut <ESC>:UndotreeToggle<CR>
 nnoremap <Leader>uf :UndotreeFocus<CR>
 
 " clang-format shortcuts
-map <C-K> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
-imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+map <C-A> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+imap <C-A> <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 
 " mucomplete
 let g:mucomplete#enable_auto_at_startup = 1
