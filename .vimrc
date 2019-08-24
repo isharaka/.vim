@@ -62,7 +62,9 @@ map! <ESC>[2B <S-Down>
 map! <ESC>[2C <S-Right>
 map! <ESC>[2D <S-Left>
 
-" Escape short ecuts
+" Map Leader to space
+let mapleader = " "
+" Escape short cuts
 inoremap <C-C> <ESC>
 inoremap <C-\> <ESC>
 vnoremap <C-C> <ESC>
