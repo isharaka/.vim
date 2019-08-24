@@ -15,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'lifepillar/vim-mucomplete'
+Plug 'haya14busa/incsearch.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -80,18 +81,20 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" search cutomizations
+" incsearch cutomizations
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
-set incsearch
-
-" Enable search highlights at every search
-noremap # :set hlsearch<CR>:nohlsearch<CR>#
-noremap * :set hlsearch<CR>:nohlsearch<CR>*
-noremap / :set hlsearch<CR>:nohlsearch<CR>/
-noremap ? :set hlsearch<CR>:nohlsearch<CR>?
-
-" shortcut to toggle highlights
-noremap <C-H> :set hlsearch!<CR>
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 " vim-preview customizations
 autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR><C-W>=
