@@ -17,6 +17,7 @@ Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'lifepillar/vim-mucomplete'
 Plug 'haya14busa/incsearch.vim'
 Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'inkarkat/vim-ReplaceWithSameIndentRegister'
 
 " Initialize plugin system
 call plug#end()
