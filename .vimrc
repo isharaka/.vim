@@ -18,6 +18,7 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'haya14busa/incsearch.vim'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'inkarkat/vim-ReplaceWithSameIndentRegister'
+Plug 'majutsushi/tagbar'
 
 " Initialize plugin system
 call plug#end()
@@ -186,3 +187,6 @@ let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#chains = {}
 let g:mucomplete#chains.default = ['file', 'keyn', 'dict']
 let g:mucomplete#chains.cpp = ['file', 'tags']
+
+" tagbar customizations
+nnoremap <Leader>b :TagbarToggle<CR>
