@@ -65,8 +65,6 @@ map! <ESC>[2B <S-Down>
 map! <ESC>[2C <S-Right>
 map! <ESC>[2D <S-Left>
 
-" Map Leader to space
-let mapleader = " "
 " Escape short cuts
 inoremap <C-C> <ESC>
 inoremap <C-\> <ESC>
@@ -179,8 +177,8 @@ inoremap <Leader>ut <ESC>:UndotreeToggle<CR>
 nnoremap <Leader>uf :UndotreeFocus<CR>
 
 " clang-format shortcuts
-map <C-A> :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
-imap <C-A> <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+map <Leader>f :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+imap <Leader>f <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 
 " mucomplete
 let g:mucomplete#enable_auto_at_startup = 1
