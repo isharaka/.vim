@@ -46,6 +46,12 @@ autocmd BufWritePre * %s/\s\+$//e
 set incsearch
 set hlsearch
 
+" Match angle brackets...
+set matchpairs+=<:>,«:»,｢:｣
+
+"Scroll when 3 lines from top/bottom
+set scrolloff=2
+
 set completeopt+=menuone
 set completeopt+=noselect
 
