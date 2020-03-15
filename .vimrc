@@ -182,6 +182,8 @@ imap <Leader>f <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 
 " mucomplete
 let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 200
+let g:mucomplete#look_behind = 5
 let g:mucomplete#chains = {}
 let g:mucomplete#chains.default = ['file', 'keyn', 'dict']
 let g:mucomplete#chains.cpp = ['file', 'tags']
