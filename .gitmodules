@@ -25,3 +25,6 @@
 [submodule "bundle/undotree"]
 	path = bundle/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "bundle/vim-vmath"]
+	path = bundle/vim-vmath
+	url = https://github.com/DavidGamba/vim-vmath.git

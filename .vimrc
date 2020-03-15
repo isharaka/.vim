@@ -181,3 +181,7 @@ let g:mucomplete#chains.cpp = ['file', 'tags']
 
 " tagbar customizations
 nnoremap <Leader>b :TagbarToggle<CR>
+
+" vim vmath
+vmap <expr>  ++  VMATH_YankAndAnalyse()
+nmap         ++  vip++
