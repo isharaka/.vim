@@ -15,7 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'lifepillar/vim-mucomplete'
-Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/is.vim'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'inkarkat/vim-ReplaceWithSameIndentRegister'
 Plug 'majutsushi/tagbar'
@@ -42,6 +42,9 @@ set expandtab
 set backspace=indent,eol,start
 " Remove trailing white spaces upon writing
 autocmd BufWritePre * %s/\s\+$//e
+
+set incsearch
+set hlsearch
 
 set completeopt+=menuone
 set completeopt+=noselect
@@ -89,21 +92,6 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-
-" incsearch cutomizations
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
 
 " vim-preview customizations
 autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR><C-W>=
