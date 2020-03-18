@@ -22,6 +22,7 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'inkarkat/vim-ReplaceWithSameIndentRegister'
 Plug 'majutsushi/tagbar'
 Plug 'romainl/vim-qf'
+Plug 'jlanzarotta/bufexplorer'
 
 " Initialize plugin system
 call plug#end()
