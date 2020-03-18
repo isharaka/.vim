@@ -23,6 +23,10 @@ Plug 'inkarkat/vim-ReplaceWithSameIndentRegister'
 Plug 'majutsushi/tagbar'
 Plug 'romainl/vim-qf'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 
 " Initialize plugin system
 call plug#end()
