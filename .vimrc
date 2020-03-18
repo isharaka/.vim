@@ -19,6 +19,7 @@ Plug 'haya14busa/is.vim'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'inkarkat/vim-ReplaceWithSameIndentRegister'
 Plug 'majutsushi/tagbar'
+Plug 'romainl/vim-qf'
 
 " Initialize plugin system
 call plug#end()
@@ -191,3 +192,7 @@ nnoremap <Leader>b :TagbarToggle<CR>
 " vim vmath
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
+
+" vim-qf
+let g:qf_mapping_ack_style = 1
+let g:qf_max_height = 20
