@@ -1,15 +1,6 @@
-[submodule "bundle/ack.vim"]
-	path = bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
-[submodule "bundle/vim-smooth-scroll"]
-	path = bundle/vim-smooth-scroll
-	url = https://github.com/cskeeters/vim-smooth-scroll.git
 [submodule "bundle/syntax"]
 	path = bundle/syntax
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
-[submodule "bundle/undotree"]
-	path = bundle/undotree
-	url = https://github.com/mbbill/undotree.git
 [submodule "bundle/vim-vmath"]
 	path = bundle/vim-vmath
 	url = https://github.com/DavidGamba/vim-vmath.git

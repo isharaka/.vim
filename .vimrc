@@ -27,6 +27,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'mileszs/ack.vim'
+Plug 'mbbill/undotree'
+Plug 'terryma/vim-smooth-scroll'
 
 " Initialize plugin system
 call plug#end()
