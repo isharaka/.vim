@@ -81,15 +81,17 @@ inoremap <C-\> <ESC>
 vnoremap <C-C> <ESC>
 vnoremap <C-\> <ESC>
 
-" MOve to end of line with +
+" Move to end of line with +
 nnoremap + $
 vnoremap + $
 
-" Quicker window movement
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-H> <C-W>h
-nnoremap <C-L> <C-W>l
+" Shortcuts to move lines
+nnoremap <C-J> :m .+1<CR>==
+nnoremap <C-K> :m .-2<CR>==
+inoremap <C-J> <Esc>:m .+1<CR>==gi
+inoremap <C-K> <Esc>:m .-2<CR>==gi
+vnoremap <C-J> :m '>+1<CR>gv=gv
+vnoremap <C-K> :m '<-2<CR>gv=gv
 
 " Setup relative numbering
 set number relativenumber
