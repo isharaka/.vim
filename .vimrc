@@ -16,6 +16,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'lifepillar/vim-mucomplete'
 Plug 'haya14busa/is.vim'
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-LineJuggler'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'inkarkat/vim-ReplaceWithSameIndentRegister'
 Plug 'majutsushi/tagbar'
