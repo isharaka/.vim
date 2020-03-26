@@ -30,6 +30,7 @@ Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
 Plug 'mbbill/undotree'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'ngemily/vim-vp4'
 
 " Initialize plugin system
 call plug#end()
