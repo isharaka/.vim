@@ -199,6 +199,9 @@ let g:mucomplete#chains = {}
 let g:mucomplete#chains.default = ['file', 'keyn', 'dict']
 let g:mucomplete#chains.cpp = ['file', 'tags']
 
+imap <C-L> <Plug>(MUcompleteCycFwd)
+imap <C-H> <Plug>(MUcompleteCycBwd)
+
 " tagbar customizations
 nnoremap <Leader>b :TagbarToggle<CR>
 
