@@ -31,6 +31,7 @@ Plug 'mileszs/ack.vim'
 Plug 'mbbill/undotree'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'ngemily/vim-vp4'
+Plug 'will133/vim-dirdiff'
 
 " Initialize plugin system
 call plug#end()
@@ -212,3 +213,7 @@ nmap         ++  vip++
 " vim-qf
 let g:qf_mapping_ack_style = 1
 let g:qf_max_height = 20
+
+" DirDiff customizations
+let g:DirDiffSimpleMap = 1
+let g:DirDiffExcludes = "tags,*.pyc,*.swp"
