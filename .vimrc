@@ -32,6 +32,7 @@ Plug 'mbbill/undotree'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'ngemily/vim-vp4'
 Plug 'will133/vim-dirdiff'
+Plug 'tpope/vim-surround'
 
 " Initialize plugin system
 call plug#end()
