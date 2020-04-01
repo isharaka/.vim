@@ -93,6 +93,10 @@ inoremap <C-\> <ESC>
 vnoremap <C-C> <ESC>
 vnoremap <C-\> <ESC>
 
+" Quick window resizing
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
 " Move to end of line with +
 nnoremap + $
 vnoremap + $
