@@ -35,6 +35,7 @@ Plug 'will133/vim-dirdiff'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
+Plug 'cocopon/iceberg.vim'
 
 " Initialize plugin system
 call plug#end()
