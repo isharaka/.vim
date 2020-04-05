@@ -36,6 +36,7 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'vifm/vifm.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -225,3 +226,7 @@ let g:qf_max_height = 20
 " DirDiff customizations
 let g:DirDiffSimpleMap = 1
 let g:DirDiffExcludes = "tags,*.pyc,*.swp"
+
+" vifm customizations
+let g:vifm_embed_term=1
+let g:vifm_embed_split=1
