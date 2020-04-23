@@ -198,8 +198,8 @@ inoremap <Leader>ut <ESC>:UndotreeToggle<CR>
 nnoremap <Leader>uf :UndotreeFocus<CR>
 
 " clang-format shortcuts
-map <Leader>f :py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
-imap <Leader>f <c-o>:py3f /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+map <Leader>f :py3f /usr/share/clang/clang-format-9/clang-format.py<CR>
+imap <Leader>f <c-o>:py3f /usr/share/clang/clang-format-9/clang-format.py<CR>
 
 " mucomplete
 let g:mucomplete#enable_auto_at_startup = 1
