@@ -98,6 +98,13 @@ inoremap <C-\> <ESC>
 vnoremap <C-C> <ESC>
 vnoremap <C-\> <ESC>
 
+" terminal shortcuts
+if v:version >= 800
+    nnoremap <Leader>_ :terminal<CR>
+    inoremap <Leader>_ <ESC>:terminal<CR>
+    tnoremap <Leader>_ <C-W><C-C>
+endif
+
 " Quick window resizing
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
@@ -228,5 +235,13 @@ let g:DirDiffSimpleMap = 1
 let g:DirDiffExcludes = "tags,*.pyc,*.swp"
 
 " vifm customizations
-let g:vifm_embed_term=1
-let g:vifm_embed_split=1
+if v:version >= 800
+    let g:vifm_embed_term=1
+    let g:vifm_embed_split=1
+endif
+
+nnoremap <Leader>= :Vifm<CR>
+inoremap <Leader>= <ESC>:Vifm<CR>
+if v:version >= 800
+    tnoremap <Leader>= <C-W><C-C>
+endif
