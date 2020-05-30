@@ -557,19 +557,28 @@ comm! -nargs=? -bang IHS call AlternateOpenFileUnderCursor("h<bang>", <f-args>)
 comm! -nargs=? -bang IHV call AlternateOpenFileUnderCursor("v<bang>", <f-args>)
 comm! -nargs=? -bang IHT call AlternateOpenFileUnderCursor("t<bang>", <f-args>)
 comm! -nargs=? -bang IHN call AlternateOpenNextFile("<bang>")
-imap <Leader>ih <ESC>:IHS<CR>
-nmap <Leader>ih :IHS<CR>
-imap <Leader>is <ESC>:IHS<CR>:A<CR>
-nmap <Leader>is :IHS<CR>:A<CR>
-imap <Leader>ihn <ESC>:IHN<CR>
-nmap <Leader>ihn :IHN<CR>
 
-imap <Leader>t <ESC>:A<CR><ESC>
-nmap <Leader>t :A<CR><ESC>
-imap <Leader>yt <ESC>:IH<CR><ESC>
-nmap <Leader>yt :IH<CR><ESC>
-imap <Leader>yy <ESC>:IHN<CR><ESC>
-nmap <Leader>yy :IHN<CR><ESC>
+imap <Leader>ahh <ESC>:IH<CR><ESC>
+nmap <Leader>ahh :IH<CR><ESC>
+imap <Leader>ahs <ESC>:IHS<CR><ESC>
+nmap <Leader>ahs :IHS<CR><ESC>
+imap <Leader>ahv <ESC>:IHV<CR><ESC>
+nmap <Leader>ahv :IHV<CR><ESC>
+imap <Leader>aht <ESC>:IHT<CR><ESC>
+nmap <Leader>aht :IHT<CR><ESC>
+imap <Leader>ahn <ESC>:IHN<CR><ESC>
+nmap <Leader>ahn :IHN<CR><ESC>
+
+imap <Leader>aa <ESC>:A<CR><ESC>
+nmap <Leader>aa :A<CR><ESC>
+imap <Leader>as <ESC>:AS<CR><ESC>
+nmap <Leader>as :AS<CR><ESC>
+imap <Leader>av <ESC>:AV<CR><ESC>
+nmap <Leader>av :AV<CR><ESC>
+imap <Leader>at <ESC>:AT<CR><ESC>
+nmap <Leader>at :AT<CR><ESC>
+imap <Leader>an <ESC>:AN<CR><ESC>
+nmap <Leader>an :AN<CR><ESC>
 
 "function! <SID>PrintList(theList)
 "   let n = 1
