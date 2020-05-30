@@ -220,7 +220,9 @@ imap <C-L> <Plug>(MUcompleteCycFwd)
 imap <C-H> <Plug>(MUcompleteCycBwd)
 
 " tagbar customizations
-nnoremap <Leader>b :TagbarToggle<CR>
+nnoremap <Leader>tbt :TagbarToggle<CR>
+let g:tagbar_window_local = 1
+let g:tagbar_autofocus = 1
 
 " vim vmath
 vmap <expr>  ++  VMATH_YankAndAnalyse()
