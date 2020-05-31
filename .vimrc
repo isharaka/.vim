@@ -205,8 +205,23 @@ inoremap <Leader>ut <ESC>:UndotreeToggle<CR>
 nnoremap <Leader>uf :UndotreeFocus<CR>
 
 " clang-format shortcuts
-map <Leader>f :py3f /usr/share/clang/clang-format-9/clang-format.py<CR>
-imap <Leader>f <c-o>:py3f /usr/share/clang/clang-format-9/clang-format.py<CR>
+function! FormatRange() range
+    silent exe a:firstline.",".a:lastline."py3f /usr/share/clang/clang-format-9/clang-format.py"
+endfunction
+
+command! -range Format <line1>,<line2>call FormatRange()
+
+function! FormatMotion(type, ...)
+    if a:0
+        silent exe "'<,'>Format"
+    else
+        silent exe line("'[").",".line("']")."Format"
+    endif
+endfunction
+
+map <Leader>f :set opfunc=FormatMotion<CR>g@
+vmap <Leader>f :call FormatMotion(visualmode(), 1)<CR>
+imap <Leader>f <c-o>:Format<CR>
 
 " mucomplete
 let g:mucomplete#enable_auto_at_startup = 1
