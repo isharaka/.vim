@@ -211,16 +211,12 @@ endfunction
 
 command! -range Format <line1>,<line2>call FormatRange()
 
-function! FormatMotion(type, ...)
-    if a:0
-        silent exe "'<,'>Format"
-    else
-        silent exe line("'[").",".line("']")."Format"
-    endif
+function! FormatMotion(type)
+    silent exe line("'[").",".line("']")."Format"
 endfunction
 
 map <Leader>f :set opfunc=FormatMotion<CR>g@
-vmap <Leader>f :call FormatMotion(visualmode(), 1)<CR>
+vmap <Leader>f :Format<CR>
 imap <Leader>f <c-o>:Format<CR>
 
 " mucomplete
