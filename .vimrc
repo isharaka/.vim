@@ -37,6 +37,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'vifm/vifm.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
 
 " Initialize plugin system
 call plug#end()
