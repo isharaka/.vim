@@ -189,6 +189,9 @@ function! NetrwMapping()
   nmap <buffer><silent> go <C-W>w<C-W>pP<C-W>p
 endfunction
 
+" dirvish customizations
+let g:dirvish_mode = ':sort ,^.*[\/],'
+
 " detect remote ssh session
 let g:remote_session = ($SSH_CLIENT != "")
 
