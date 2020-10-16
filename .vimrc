@@ -238,8 +238,8 @@ let g:tagbar_window_local = 1
 let g:tagbar_autofocus = 1
 
 " vim vmath
-vmap <expr>  ++  VMATH_YankAndAnalyse()
-nmap         ++  vip++
+vmap <expr>  <Leader><Leader>+  VMATH_YankAndAnalyse()
+nmap         <Leader><Leader>+  vip++
 
 " vim-qf
 let g:qf_mapping_ack_style = 1
