@@ -24,7 +24,6 @@ Plug 'majutsushi/tagbar'
 Plug 'romainl/vim-qf'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
@@ -39,6 +38,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'vifm/vifm.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
+Plug 'justinmk/vim-dirvish'
 
 " Initialize plugin system
 call plug#end()
