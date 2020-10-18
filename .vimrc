@@ -39,6 +39,7 @@ Plug 'vifm/vifm.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'justinmk/vim-dirvish'
+Plug 'mg979/vim-visual-multi'
 
 " Initialize plugin system
 call plug#end()
@@ -133,25 +134,25 @@ augroup numbertoggle
 augroup END
 
 " vim-preview customizations
-autocmd FileType qf nnoremap <silent><buffer> <C-Left> :PreviewClose<CR><C-W>=
-autocmd FileType qf nnoremap <silent><buffer> <C-Right> :PreviewQuickfix<CR>
-autocmd FileType qf nnoremap <silent><buffer> <S-Right> :PreviewClose<CR><CR><C-W>=
+autocmd FileType qf nnoremap <silent><buffer> <M-Left> :PreviewClose<CR><C-W>=
+autocmd FileType qf nnoremap <silent><buffer> <M-Right> :PreviewQuickfix<CR>
+autocmd FileType qf nnoremap <silent><buffer> <C-Right> :PreviewClose<CR><CR><C-W>=
 autocmd FileType qf nnoremap <silent><buffer> <Up> k:PreviewQuickfix<CR>
 autocmd FileType qf nnoremap <silent><buffer> <Down> j:PreviewQuickfix<CR>
 
-noremap <C-Up>   :PreviewScroll -1<CR>
-noremap <C-Down> :PreviewScroll +1<CR>
-noremap <C-Left> :PreviewClose<CR>
-noremap <C-Right> :PreviewTag<CR>
-noremap <S-Right> :PreviewGoto edit<CR>:PreviewClose<CR>
-inoremap <C-Up>   <C-\><C-o>:PreviewScroll -1<CR>
-inoremap <C-Down> <C-\><C-o>:PreviewScroll +1<CR>
-inoremap <C-Left> <C-\><C-o>:PreviewClose<CR>
-inoremap <C-Right> <C-\><C-o>:PreviewTag<CR>
-inoremap <S-Right> <ESC>:PreviewGoto edit<CR>:PreviewClose<CR>
+noremap <M-Up>   :PreviewScroll -1<CR>
+noremap <M-Down> :PreviewScroll +1<CR>
+noremap <M-Left> :PreviewClose<CR>
+noremap <M-Right> :PreviewTag<CR>
+noremap <C-Right> :PreviewGoto edit<CR>:PreviewClose<CR>
+inoremap <M-Up>   <C-\><C-o>:PreviewScroll -1<CR>
+inoremap <M-Down> <C-\><C-o>:PreviewScroll +1<CR>
+inoremap <M-Left> <C-\><C-o>:PreviewClose<CR>
+inoremap <M-Right> <C-\><C-o>:PreviewTag<CR>
+inoremap <C-Right> <ESC>:PreviewGoto edit<CR>:PreviewClose<CR>
 
 nnoremap <C-P> :FZF<CR>
-nnoremap <C-N> :Buffers<CR>
+nnoremap <C-M> :Buffers<CR>
 
 " Use ripgrep with Ack
 if executable('rg')
