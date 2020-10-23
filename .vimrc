@@ -41,6 +41,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'justinmk/vim-dirvish'
 Plug 'mg979/vim-visual-multi'
+Plug 'dyng/ctrlsf.vim'
+Plug 'mhinz/vim-startify'
 
 " Initialize plugin system
 call plug#end()
