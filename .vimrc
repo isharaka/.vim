@@ -268,5 +268,7 @@ if v:version >= 800
     tnoremap <Leader>= <C-W><C-C>
 endif
 
-nmap <C-H>  :set hlsearch!<CR>
 nmap <C-S>  :setlocal spell!<CR>
+
+noremap <silent> <C-L> :nohlsearch <bar> redraw<CR>
+inoremap <silent> <C-L> <C-O>:nohlsearch <bar> redraw<CR>
