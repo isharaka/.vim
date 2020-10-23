@@ -158,6 +158,26 @@ nnoremap <C-P> :FZF<CR>
 nnoremap <C-Q> :Buffers<CR>
 nnoremap <C-?> :BLines<CR>
 
+function! RipgrepFzf(fullscreen, ...)
+  let l:path = ''
+  let l:query = ''
+
+  if a:0 > 0
+      let l:query = a:1
+  endif
+  if a:0 > 1
+      let l:path = a:2
+  endif
+
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s %s || true'
+  let initial_command = printf(command_fmt, shellescape(l:query), l:path)
+  let reload_command = printf(command_fmt, '{q}', l:path)
+  let spec = {'options': ['--phony', '--query', l:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang -complete=file RG call RipgrepFzf(<bang>0, <f-args>)
+
 " Use ripgrep with Ack
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
