@@ -155,7 +155,7 @@ inoremap <M-Right> <C-\><C-o>:PreviewTag<CR>
 inoremap <C-Right> <ESC>:PreviewGoto edit<CR>:PreviewClose<CR>
 
 nnoremap <C-P> :FZF<CR>
-nnoremap <C-I> :Buffers<CR>
+nnoremap <C-Q> :Buffers<CR>
 nnoremap <C-?> :BLines<CR>
 
 " Use ripgrep with Ack
