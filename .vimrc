@@ -156,7 +156,7 @@ inoremap <C-Right> <ESC>:PreviewGoto edit<CR>:PreviewClose<CR>
 
 nnoremap <C-P> :FZF<CR>
 nnoremap <C-Q> :Buffers<CR>
-nnoremap <C-?> :BLines<CR>
+nnoremap <Leader>bl :BLines<CR>
 
 function! RipgrepFzf(fullscreen, ...)
   let l:path = ''
