@@ -43,6 +43,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'mg979/vim-visual-multi'
 Plug 'dyng/ctrlsf.vim'
 Plug 'mhinz/vim-startify'
+Plug 'skywind3000/vim-terminal-help'
 
 " Initialize plugin system
 call plug#end()
