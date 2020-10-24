@@ -105,12 +105,9 @@ inoremap <C-\> <ESC>
 vnoremap <C-C> <ESC>
 vnoremap <C-\> <ESC>
 
-" terminal shortcuts
-if v:version >= 800
-    nnoremap <Leader>_ :terminal<CR>
-    inoremap <Leader>_ <ESC>:terminal<CR>
-    tnoremap <Leader>_ <C-W><C-C>
-endif
+" terminal-help customizations
+let g:terminal_edit='drop'
+let g:terminal_kill='term'
 
 " Quick window resizing
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -331,3 +328,5 @@ nmap <C-S>  :setlocal spell!<CR>
 
 noremap <silent> <C-L> :nohlsearch <bar> redraw<CR>
 inoremap <silent> <C-L> <C-O>:nohlsearch <bar> redraw<CR>
+
+let g:startify_change_to_dir = 0
