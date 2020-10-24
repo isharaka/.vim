@@ -158,25 +158,59 @@ nnoremap <C-P> :FZF<CR>
 nnoremap <C-Q> :Buffers<CR>
 nnoremap <Leader>bl :BLines<CR>
 
-function! RipgrepFzf(fullscreen, ...)
-  let l:path = ''
+function! RipgrepFzf(fuzzy, fullscreen, ...)
   let l:query = ''
+  let l:path = ''
+  let l:rg_args = ''
 
-  if a:0 > 0
-      let l:query = a:1
-  endif
-  if a:0 > 1
-      let l:path = a:2
-  endif
+  " Parsing the variadic parameters as [query] [path...] [--] [args to rg...]
+  " Corresponding states               0 ->    1 ->      2 -> 3
+  let l:state = 0
 
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s %s || true'
-  let initial_command = printf(command_fmt, shellescape(l:query), l:path)
-  let reload_command = printf(command_fmt, '{q}', l:path)
-  let spec = {'options': ['--phony', '--query', l:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  for s in a:000
+      if l:state == 0
+          if isdirectory(expand(s)) || filereadable(expand(s))
+              let l:state = 1
+          endif
+      elseif l:state == 1
+          if !isdirectory(expand(s)) && !filereadable(expand(s))
+              let l:state = 3
+          endif
+      endif
+
+      if s == '--'
+          let l:state = 2
+      endif
+
+      if l:state == 0
+          let l:query = s
+      elseif l:state == 1
+          let l:path =  l:path . ' ' . s
+      elseif l:state == 3
+          let l:rg_args =  l:rg_args . ' ' . s
+      endif
+
+      if l:state == 0
+          let l:state = 1
+      elseif l:state == 2
+          let l:state = 3
+      endif
+  endfor
+
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s -- %s %s || true'
+  let initial_command = printf(command_fmt, l:rg_args, shellescape(l:query), l:path)
+
+  if a:fuzzy
+      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(), a:fullscreen)
+  else
+      let reload_command = printf(command_fmt, l:rg_args, '{q}', l:path)
+      let spec = {'options': ['--phony', '--query', l:query, '--bind', 'change:reload:'.reload_command]}
+      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endif
 endfunction
 
-command! -nargs=* -bang -complete=file RG call RipgrepFzf(<bang>0, <f-args>)
+command! -nargs=* -bang -complete=file RG call RipgrepFzf(0, <bang>0, <f-args>)
+command! -nargs=* -bang -complete=file RGF call RipgrepFzf(1, <bang>0, <f-args>)
 
 " Use ripgrep with Ack
 if executable('rg')
@@ -192,6 +226,9 @@ nnoremap <Leader>ss :Ack!<Space>
 nnoremap <Leader>sc :Ack! -tcpp <C-R><C-W> .
 nnoremap <Leader>sm :Ack! -tmeson <C-R><C-W> .
 nnoremap <Leader>sp :Ack! -tpy <C-R><C-W> .
+
+nnoremap <Leader>sr :RG!
+nnoremap <Leader>sf :RGF!
 
 " netrw customizations
 
