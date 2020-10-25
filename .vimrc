@@ -201,7 +201,7 @@ function! RipgrepFzf(fuzzy, fullscreen, ...)
   let l:key_mappings = 'j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
 
   if a:fuzzy
-      let spec = {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']  '--bind', l:key_mappings]}
+      let spec = {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}',  '--bind', l:key_mappings]}
       call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   else
       let reload_command = printf(command_fmt, l:rg_args, '{q}', l:path)
