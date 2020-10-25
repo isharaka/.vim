@@ -36,7 +36,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'wellle/targets.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'tomasiser/vim-code-dark'
-Plug 'vifm/vifm.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'justinmk/vim-dirvish'
@@ -44,6 +43,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'dyng/ctrlsf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'skywind3000/vim-terminal-help'
+Plug 'isharaka/ranger-explorer.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -316,17 +316,8 @@ let g:qf_max_height = 20
 let g:DirDiffSimpleMap = 1
 let g:DirDiffExcludes = "tags,*.pyc,*.swp"
 
-" vifm customizations
-if v:version >= 800
-    let g:vifm_embed_term=1
-    let g:vifm_embed_split=1
-endif
-
-nnoremap <Leader>= :Vifm<CR>
-inoremap <Leader>= <ESC>:Vifm<CR>
-if v:version >= 800
-    tnoremap <Leader>= <C-W><C-C>
-endif
+" ranger-explorer customizations
+nnoremap <Leader>= :RangerOpenCurrentDir<CR>
 
 nmap <C-S>  :setlocal spell!<CR>
 
