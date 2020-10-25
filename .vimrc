@@ -199,10 +199,11 @@ function! RipgrepFzf(fuzzy, fullscreen, ...)
   let initial_command = printf(command_fmt, l:rg_args, shellescape(l:query), l:path)
 
   if a:fuzzy
-      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(), a:fullscreen)
+      let spec = {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}
+      call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   else
       let reload_command = printf(command_fmt, l:rg_args, '{q}', l:path)
-      let spec = {'options': ['--phony', '--query', l:query, '--bind', 'change:reload:'.reload_command]}
+      let spec = {'options': ['--phony', '--query', l:query, '--bind', 'change:reload:'.reload_command, '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}
       call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   endif
 endfunction
