@@ -230,12 +230,13 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
         let l:needle = expand('%:t:r')
         let l:query = l:needle
 
-        if !empty(l:extension)
+        if empty(l:extension)
+            let l:fd_options = l:fd_options . '--exclude "*.' . l:extension . '" '
+        else
             let l:needle = l:needle . '.'
         endif
 
         let l:needle = '[^a-zA-Z0-9_]' . l:needle
-        let l:fd_options = l:fd_options . '--exclude "*.' . l:extension . '" '
     else
         let l:needle = expand("<cfile>")
         let l:query = l:needle
