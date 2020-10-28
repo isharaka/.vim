@@ -214,6 +214,62 @@ endfunction
 command! -nargs=* -bang -complete=file RG call RipgrepFzf(0, <bang>0, <f-args>)
 command! -nargs=* -bang -complete=file RGF call RipgrepFzf(1, <bang>0, <f-args>)
 
+function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
+    let l:fd_options = '--full-path '
+
+    let l:haystack = ''
+    let l:needle = ''
+    let l:query = ''
+
+    if a:0
+        let l:haystack = expand(a:1)
+    endif
+
+    if a:alternate
+        let l:extension = expand('%:e')
+        let l:needle = expand('%:t:r')
+        let l:query = l:needle
+
+        if !empty(l:extension)
+            let l:needle = l:needle . '.'
+        endif
+        let l:fd_options = l:fd_options . '--exclude "*.' . l:extension . '" '
+    else
+        let l:needle = expand("<cfile>")
+        let l:query = l:needle
+    endif
+
+    if a:by_name
+        let l:needle = fnamemodify(l:needle, ':t')
+        let l:query = l:needle
+        let l:needle = '[^a-zA-Z0-9_]' . l:needle . '$'
+    endif
+
+    let l:key_mappings = 'j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
+    let l:fzf_options = ['--exact', '--exit-0', '--query', l:query, '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}', '--bind', l:key_mappings]
+
+    if a:mods !~ 'confirm'
+        let l:fzf_options = ['--select-1'] + l:fzf_options
+    endif
+
+    let l:fd_command = 'fd '. l:fd_options . ' "' . l:needle . '" ' . l:haystack
+    " echom l:fd_command
+    " echom l:fzf_options
+
+    call fzf#run(fzf#wrap({'source': l:fd_command, 'options': l:fzf_options}, a:fullscreen))
+endfunction
+
+command! -nargs=* -bang -complete=file GotoFile call GotoFileFzf(<q-mods>, <bang>0, 0, 0, <f-args>)
+command! -nargs=* -bang -complete=file GotoFileByName call GotoFileFzf(<q-mods>, <bang>0, 1, 0, <f-args>)
+command! -nargs=* -bang -complete=file GotoAlternateFile call GotoFileFzf(<q-mods>, <bang>0, 1, 1, <f-args>)
+
+imap <Leader>gf <ESC>:GotoFile<CR>
+nmap <Leader>gf :GotoFile<CR>
+imap <Leader>gn <ESC>:GotoFileByName<CR>
+nmap <Leader>gn :GotoFileByName<CR>
+imap <Leader>ga <ESC>:GotoAlternateFile <CR>
+nmap <Leader>ga :GotoAlternateFile <CR>
+
 " Use ripgrep with Ack
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
