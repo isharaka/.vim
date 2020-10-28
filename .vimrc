@@ -233,16 +233,18 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
         if !empty(l:extension)
             let l:needle = l:needle . '.'
         endif
+
+        let l:needle = '[^a-zA-Z0-9_]' . l:needle
         let l:fd_options = l:fd_options . '--exclude "*.' . l:extension . '" '
     else
         let l:needle = expand("<cfile>")
         let l:query = l:needle
-    endif
 
-    if a:by_name
-        let l:needle = fnamemodify(l:needle, ':t')
-        let l:query = l:needle
-        let l:needle = '[^a-zA-Z0-9_]' . l:needle . '$'
+        if a:by_name
+            let l:needle = fnamemodify(l:needle, ':t')
+            let l:query = l:needle
+            let l:needle = '[^a-zA-Z0-9_]' . l:needle . '$'
+        endif
     endif
 
     let l:key_mappings = 'j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
@@ -253,15 +255,15 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     endif
 
     let l:fd_command = 'fd '. l:fd_options . ' "' . l:needle . '" ' . l:haystack
-    " echom l:fd_command
-    " echom l:fzf_options
+    echom l:fd_command
+    echom l:fzf_options
 
     call fzf#run(fzf#wrap({'source': l:fd_command, 'options': l:fzf_options}, a:fullscreen))
 endfunction
 
 command! -nargs=* -bang -complete=file GotoFile call GotoFileFzf(<q-mods>, <bang>0, 0, 0, <f-args>)
 command! -nargs=* -bang -complete=file GotoFileByName call GotoFileFzf(<q-mods>, <bang>0, 1, 0, <f-args>)
-command! -nargs=* -bang -complete=file GotoAlternateFile call GotoFileFzf(<q-mods>, <bang>0, 1, 1, <f-args>)
+command! -nargs=* -bang -complete=file GotoAlternateFile call GotoFileFzf(<q-mods>, <bang>0, 0, 1, <f-args>)
 
 imap <Leader>gf <ESC>:GotoFile<CR>
 nmap <Leader>gf :GotoFile<CR>
