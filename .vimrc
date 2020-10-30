@@ -220,32 +220,39 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     let l:haystack = ''
     let l:needle = ''
     let l:query = ''
-    let l:prompt = '>'
+    let l:prompt = ''
 
-    if a:0
-        let l:haystack = expand(a:1)
-        let l:prompt = l:haystack . '>'
-    endif
+    for s in a:000
+        if isdirectory(expand(s))
+            let l:haystack = l:haystack . ' ' . expand(s)
+            if empty(l:prompt)
+                let l:prompt = s
+            else
+                let l:prompt = l:prompt . '|' . s
+            endif
+        endif
+    endfor
+
+    let l:prompt = l:prompt .'>>'
 
     if a:alternate
         let l:extension = expand('%:e')
         let l:needle = expand('%:t:r')
-        let l:query = l:needle
 
         if !empty(l:extension)
             let l:fd_options = l:fd_options . '--exclude "*.' . l:extension . '" '
         endif
 
+        let l:query = l:needle
         let l:needle = '(^|/|\\\\)' . l:needle . '(\.|$)'
     else
         let l:needle = expand("<cfile>")
-        let l:query = l:needle
 
         if a:by_name
             let l:needle = fnamemodify(l:needle, ':t')
-            let l:query = l:needle
         endif
 
+        let l:query = l:needle
         let l:needle = '(^|/|\\\\)' . l:needle . '$'
     endif
 
@@ -267,11 +274,8 @@ command! -nargs=* -bang -complete=file GotoFile call GotoFileFzf(<q-mods>, <bang
 command! -nargs=* -bang -complete=file GotoFileByName call GotoFileFzf(<q-mods>, <bang>0, 1, 0, <f-args>)
 command! -nargs=* -bang -complete=file GotoAlternateFile call GotoFileFzf(<q-mods>, <bang>0, 0, 1, <f-args>)
 
-imap <Leader>gf <ESC>:GotoFile<CR>
 nmap <Leader>gf :GotoFile<CR>
-imap <Leader>gn <ESC>:GotoFileByName<CR>
 nmap <Leader>gn :GotoFileByName<CR>
-imap <Leader>ga <ESC>:GotoAlternateFile <CR>
 nmap <Leader>ga :GotoAlternateFile <CR>
 
 " Use ripgrep with Ack
