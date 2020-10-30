@@ -248,6 +248,14 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     else
         let l:needle = expand("<cfile>")
 
+        if l:needle =~ '#include'
+            let l:tokens = split(getline('.'))
+
+            if len(l:tokens) == 2
+                let l:needle = trim(l:tokens[1], '"')
+            endif
+        endif
+
         if a:by_name
             let l:needle = fnamemodify(l:needle, ':t')
         endif
@@ -276,8 +284,8 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     endif
 endfunction
 
-command! -nargs=* -bang -complete=file GotoFile call GotoFileFzf(<q-mods>, <bang>0, 0, 0, <f-args>)
-command! -nargs=* -bang -complete=file GotoFileByName call GotoFileFzf(<q-mods>, <bang>0, 1, 0, <f-args>)
+command! -nargs=* -bang -complete=file GotoFile          call GotoFileFzf(<q-mods>, <bang>0, 0, 0, <f-args>)
+command! -nargs=* -bang -complete=file GotoFileByName    call GotoFileFzf(<q-mods>, <bang>0, 1, 0, <f-args>)
 command! -nargs=* -bang -complete=file GotoAlternateFile call GotoFileFzf(<q-mods>, <bang>0, 0, 1, <f-args>)
 
 nmap <Leader>gf :GotoFile<CR>
