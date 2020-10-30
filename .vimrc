@@ -267,7 +267,13 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     " echom l:fd_command
     " echom l:fzf_options
 
-    call fzf#run(fzf#wrap({'source': l:fd_command, 'options': l:fzf_options}, a:fullscreen))
+    let l:selection =  fzf#run(fzf#wrap({'source': l:fd_command, 'options': l:fzf_options}, a:fullscreen))
+
+    if empty(l:selection)
+        echom "No file selected"
+    elseif empty(l:selection[0])
+        echom "No match found!"
+    endif
 endfunction
 
 command! -nargs=* -bang -complete=file GotoFile call GotoFileFzf(<q-mods>, <bang>0, 0, 0, <f-args>)
