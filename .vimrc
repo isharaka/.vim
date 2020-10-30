@@ -220,9 +220,11 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     let l:haystack = ''
     let l:needle = ''
     let l:query = ''
+    let l:prompt = '>'
 
     if a:0
         let l:haystack = expand(a:1)
+        let l:prompt = l:haystack . '>'
     endif
 
     if a:alternate
@@ -230,13 +232,11 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
         let l:needle = expand('%:t:r')
         let l:query = l:needle
 
-        if empty(l:extension)
+        if !empty(l:extension)
             let l:fd_options = l:fd_options . '--exclude "*.' . l:extension . '" '
-        else
-            let l:needle = l:needle . '.'
         endif
 
-        let l:needle = '[^a-zA-Z0-9_]' . l:needle
+        let l:needle = '(^|/|\\\\)' . l:needle . '(\.|$)'
     else
         let l:needle = expand("<cfile>")
         let l:query = l:needle
@@ -244,20 +244,21 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
         if a:by_name
             let l:needle = fnamemodify(l:needle, ':t')
             let l:query = l:needle
-            let l:needle = '[^a-zA-Z0-9_]' . l:needle . '$'
         endif
+
+        let l:needle = '(^|/|\\\\)' . l:needle . '$'
     endif
 
     let l:key_mappings = 'j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
-    let l:fzf_options = ['--exact', '--exit-0', '--query', l:query, '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}', '--bind', l:key_mappings]
+    let l:fzf_options = ['--exact', '--exit-0', '--query', l:query, '--prompt', l:prompt, '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}', '--bind', l:key_mappings]
 
     if a:mods !~ 'confirm'
         let l:fzf_options = ['--select-1'] + l:fzf_options
     endif
 
     let l:fd_command = 'fd '. l:fd_options . ' "' . l:needle . '" ' . l:haystack
-    echom l:fd_command
-    echom l:fzf_options
+    " echom l:fd_command
+    " echom l:fzf_options
 
     call fzf#run(fzf#wrap({'source': l:fd_command, 'options': l:fzf_options}, a:fullscreen))
 endfunction
