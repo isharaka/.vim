@@ -198,7 +198,7 @@ function! RipgrepFzf(fuzzy, fullscreen, ...)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s -- %s %s || true'
   let initial_command = printf(command_fmt, l:rg_args, shellescape(l:query), l:path)
 
-  let l:key_mappings = 'j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
+  let l:key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
 
   if a:fuzzy
       let spec = {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}',  '--bind', l:key_mappings]}
@@ -215,25 +215,21 @@ command! -nargs=* -bang -complete=file RG call RipgrepFzf(0, <bang>0, <f-args>)
 command! -nargs=* -bang -complete=file RGF call RipgrepFzf(1, <bang>0, <f-args>)
 
 function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
-    let l:fd_options = '--full-path '
-
     let l:haystack = ''
-    let l:needle = ''
-    let l:query = ''
     let l:prompt = ''
 
     for s in a:000
         if isdirectory(expand(s))
             let l:haystack = l:haystack . ' ' . expand(s)
-            if empty(l:prompt)
-                let l:prompt = s
-            else
-                let l:prompt = l:prompt . '|' . s
-            endif
+            let l:prompt = l:prompt . (empty(l:prompt) ? '' : '|' ) . s
         endif
     endfor
 
     let l:prompt = l:prompt .'>>'
+
+    let l:query = ''
+    let l:needle = ''
+    let l:fd_options = '--full-path '
 
     if a:alternate
         let l:extension = expand('%:e')
@@ -242,9 +238,6 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
         if !empty(l:extension)
             let l:fd_options = l:fd_options . '--exclude "*.' . l:extension . '" '
         endif
-
-        let l:query = l:needle
-        let l:needle = '(^|/|\\\\)' . l:needle . '(\.|$)'
     else
         let l:needle = expand("<cfile>")
 
@@ -259,12 +252,12 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
         if a:by_name
             let l:needle = fnamemodify(l:needle, ':t')
         endif
-
-        let l:query = l:needle
-        let l:needle = '(^|/|\\\\)' . l:needle . '$'
     endif
 
-    let l:key_mappings = 'j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
+    let l:query = l:needle
+    let l:needle = '(^|/|\\\\)' . l:needle . (a:alternate ? '(\.|$)' : '$')
+
+    let l:key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
     let l:fzf_options = ['--exact', '--exit-0', '--query', l:query, '--prompt', l:prompt, '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}', '--bind', l:key_mappings]
 
     if a:mods !~ 'confirm'
@@ -278,9 +271,9 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     let l:selection =  fzf#run(fzf#wrap({'source': l:fd_command, 'options': l:fzf_options}, a:fullscreen))
 
     if empty(l:selection)
-        echom "No file selected"
+        echom 'No file selected for "' . l:query . '"'
     elseif empty(l:selection[0])
-        echom "No match found!"
+        echom 'No match found for "' . l:query . '"!'
     endif
 endfunction
 
