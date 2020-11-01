@@ -198,7 +198,7 @@ function! RipgrepFzf(fuzzy, fullscreen, ...)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s -- %s %s || true'
   let initial_command = printf(command_fmt, l:rg_args, shellescape(l:query), l:path)
 
-  let l:key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
+  let l:key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up'
 
   if a:fuzzy
       let spec = {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}',  '--bind', l:key_mappings]}
@@ -242,11 +242,8 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
         let l:needle = expand("<cfile>")
 
         if l:needle =~ '#include'
-            let l:tokens = split(getline('.'))
-
-            if len(l:tokens) == 2
-                let l:needle = trim(l:tokens[1], '"')
-            endif
+            norm W
+            let l:needle = expand("<cfile>")
         endif
 
         if a:by_name
@@ -257,7 +254,7 @@ function! GotoFileFzf(mods, fullscreen, by_name, alternate, ...)
     let l:query = l:needle
     let l:needle = '(^|/|\\\\)' . l:needle . (a:alternate ? '(\.|$)' : '$')
 
-    let l:key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,q:abort'
+    let l:key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up'
     let l:fzf_options = ['--exact', '--exit-0', '--query', l:query, '--prompt', l:prompt, '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}', '--bind', l:key_mappings]
 
     if a:mods !~ 'confirm'
