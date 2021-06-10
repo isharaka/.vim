@@ -152,7 +152,12 @@ inoremap <M-Left> <C-\><C-o>:PreviewClose<CR>
 inoremap <M-Right> <C-\><C-o>:PreviewTag<CR>
 inoremap <C-Right> <ESC>:PreviewGoto edit<CR>:PreviewClose<CR>
 
-nnoremap <C-P> :FZF<CR>
+let s:fzf_key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up'
+
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--bind', s:fzf_key_mappings]}), <bang>0)
+command! -bang -nargs=? -complete=buffer Buffers call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({'options': ['--bind', s:fzf_key_mappings]}), <bang>0)
+
+nnoremap <C-P> :Files<CR>
 nnoremap <C-Q> :Buffers<CR>
 nnoremap <Leader>bl :BLines<CR>
 
@@ -198,10 +203,8 @@ function! RipgrepFzf(fuzzy, fullscreen, ...)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s -- %s %s || true'
   let initial_command = printf(command_fmt, l:rg_args, shellescape(l:query), l:path)
 
-  let l:key_mappings = 'alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up'
-
   if a:fuzzy
-      let spec = {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}',  '--bind', l:key_mappings]}
+      let spec = {'options': ['--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}',  '--bind', s:fzf_key_mappings]}
       call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   else
       let reload_command = printf(command_fmt, l:rg_args, '{q}', l:path)
