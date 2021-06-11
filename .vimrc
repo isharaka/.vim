@@ -200,7 +200,7 @@ function! RipgrepFzf(fuzzy, fullscreen, ...)
       endif
   endfor
 
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s -- %s %s || true'
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --glob !tags --smart-case %s -- %s %s || true'
   let initial_command = printf(command_fmt, l:rg_args, shellescape(l:query), l:path)
 
   if a:fuzzy
