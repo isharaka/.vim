@@ -297,6 +297,7 @@ else
 endif
 
 nnoremap <Leader>ss :Ack!<Space>
+nnoremap <Leader>sb :Ack! -tbazel <C-R><C-W> .
 nnoremap <Leader>sc :Ack! -tcpp <C-R><C-W> .
 nnoremap <Leader>sm :Ack! -tmeson <C-R><C-W> .
 nnoremap <Leader>sp :Ack! -tpy <C-R><C-W> .
