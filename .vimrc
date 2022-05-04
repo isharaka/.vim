@@ -44,6 +44,7 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'skywind3000/vim-terminal-help'
 Plug 'isharaka/ranger-explorer.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Initialize plugin system
 call plug#end()
